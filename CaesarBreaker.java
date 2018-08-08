@@ -57,13 +57,16 @@ public class CaesarBreaker {
 	 */
 	
 	public void testDecrypt() {
+		
+		System.out.println("Half of String Xifqvximt tsdtlxzrx iijirvtl ek Uybi is "+ halfOfString("Xifqvximt tsdtlxzrx",0)+ " and "+ halfOfString("Xifqvximt tsdtlxzrx",1));
 		//System.out.println("The decrypted message is "+ decrypt("WIVV TRBV ZE KYV TFEWVIVETV IFFD!"));
-		//System.out.println("Half of Strinf Qbkm Zgis is "+ halfOfString("Qbkm Zgis", 0));
-		//System.out.println("Half of Strinf Qbkm Zgis is "+ halfOfString("Qbkm Zgis", 1));
-		System.out.println("Decryption with two keys for message = "
-				+ decryptTwoKeys("Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu"));
+		
+		System.out.println("Decryption with two keys for message Akag tjw Xibhr awoa aoee xakex znxag xwko = " + decryptTwoKeys("Akag tjw Xibhr awoa aoee xakex znxag xwko"));
+		System.out.println("Decryption with two keys for message lfa = "+ decryptTwoKeys("lfa"));
 		//System.out.println("Half of Strinf Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu is "+ halfOfString("Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu", 0));
 		//System.out.println("The decrypted message is "+ decrypt("Gp  bqpok feiq cbbbbbbbbb"));
+		
+
 	}
 	
 	/* Write the method halfOfString in the CaesarBreaker class that has two parameters, 
@@ -126,12 +129,27 @@ public class CaesarBreaker {
 	
 	public String decryptTwoKeys (String encrypted) {
 		CaesarCipher cc = new CaesarCipher();
+		/*for (int k = 0; k < 26; k++) {
+			System.out.println(cc.encrypt("Xifqvximt",26 - k));
+		}
+		
+		for (int k = 0; k < 26; k++) {
+			System.out.println(cc.encrypt("tsdtlxzrx", 26 -k));
+		}
+		*/
+		/*for (int k = 0; k < 26; k++) {
+			for (int j = 0; j < 26; j++){
+			System.out.println(k +" and "+ j +" form "+ cc.encryptTwoKeys("Xifqvximt",26 - k, 26 - j));
+			}
+			}*/
 		//int key1,key2;
-		String string1 = halfOfString("Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu",0);
-		System.out.println(string1);
+		//String string1 = halfOfString("Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu",0);
+		//System.out.println(string1);
 		//key1 = getKey(halfOfString(encrypted,0));
-		System.out.println("The encrypted String is "+cc.encryptTwoKeys("Just a test string with lots of eeeeeeeeeeeeeeeees", 23, 2));
-		System.out.println("The encrypted String is "+cc.encryptTwoKeys("Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu", 26-23, 26-2));
+		//System.out.println("The encrypted String is "+cc.encryptTwoKeys("Just a test string with lots of eeeeeeeeeeeeeeeees", 23, 2));
+		System.out.println("The encrypted String is "+cc.encryptTwoKeys("Top ncmy qkff vi vguv vbg ycpx", 26-2, 26-20));
+		
+		System.out.println("The encrypted String is "+cc.encryptTwoKeys("Xifqvximt tsdtlxzrx iijirvtl ek Uybi", 26-17, 26-4));
 		String decryptedString = cc.encryptTwoKeys(encrypted,26-getKey(halfOfString(encrypted,0)), 26-getKey(halfOfString(encrypted,1)));
 		return decryptedString; 
 	}
