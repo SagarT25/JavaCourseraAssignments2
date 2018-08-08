@@ -27,9 +27,11 @@ public class CaesarBreaker {
 	
 	public int maxIndex(int[] arrayOfLetterCounts) {
 		int maxLetterOccurence = -1;
-		for (int k=0 ; k < arrayOfLetterCounts.length; k++) {
-			if (arrayOfLetterCounts[k] > maxLetterOccurence) {
+		int maxValue = -1;
+		for (int k=0; k < arrayOfLetterCounts.length; k++) {
+			if (arrayOfLetterCounts[k] > maxValue ) {
 				maxLetterOccurence = k;
+				maxValue = arrayOfLetterCounts[k];
 			}
 		}
 		return maxLetterOccurence;
@@ -56,8 +58,12 @@ public class CaesarBreaker {
 	
 	public void testDecrypt() {
 		//System.out.println("The decrypted message is "+ decrypt("WIVV TRBV ZE KYV TFEWVIVETV IFFD!"));
-		System.out.println("Half of Strinf Qbkm Zgis is "+ halfOfString("Qbkm Zgis", 0));
-		System.out.println("Half of Strinf Qbkm Zgis is "+ halfOfString("Qbkm Zgis", 1));
+		//System.out.println("Half of Strinf Qbkm Zgis is "+ halfOfString("Qbkm Zgis", 0));
+		//System.out.println("Half of Strinf Qbkm Zgis is "+ halfOfString("Qbkm Zgis", 1));
+		System.out.println("Decryption with two keys for message = "
+				+ decryptTwoKeys("Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu"));
+		//System.out.println("Half of Strinf Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu is "+ halfOfString("Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu", 0));
+		//System.out.println("The decrypted message is "+ decrypt("Gp  bqpok feiq cbbbbbbbbb"));
 	}
 	
 	/* Write the method halfOfString in the CaesarBreaker class that has two parameters, 
@@ -75,7 +81,7 @@ public class CaesarBreaker {
 			if (start%2 == 0 && k%2==0) {
 				halfString.append(message.charAt(k));
 				//halfString.setCharAt(k, message.charAt(k));
-				System.out.println(halfString.toString());
+				//System.out.println(halfString.toString());
 			}
 			// For even locations like 2, 4, etc. in a word , index starts at 1 an odd position
 			else if (start%2 == 1 && k%2==1) {
@@ -98,7 +104,7 @@ public class CaesarBreaker {
 		if (maxDex < 4) {
 			dKey = 26 - (4 - maxDex);
 		}
-		//System.out.println("The decryption key is " + dKey);
+		System.out.println("The decryption key is " + dKey);
 		return dKey;
 		
 	}
@@ -119,8 +125,15 @@ public class CaesarBreaker {
 	 */
 	
 	public String decryptTwoKeys (String encrypted) {
-		int key;
-		return
+		CaesarCipher cc = new CaesarCipher();
+		//int key1,key2;
+		String string1 = halfOfString("Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu",0);
+		System.out.println(string1);
+		//key1 = getKey(halfOfString(encrypted,0));
+		System.out.println("The encrypted String is "+cc.encryptTwoKeys("Just a test string with lots of eeeeeeeeeeeeeeeees", 23, 2));
+		System.out.println("The encrypted String is "+cc.encryptTwoKeys("Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu", 26-23, 26-2));
+		String decryptedString = cc.encryptTwoKeys(encrypted,26-getKey(halfOfString(encrypted,0)), 26-getKey(halfOfString(encrypted,1)));
+		return decryptedString; 
 	}
 	
     public static void main(String args[]) {
