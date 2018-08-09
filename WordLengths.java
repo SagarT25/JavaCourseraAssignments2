@@ -30,11 +30,12 @@ public class WordLengths {
 			 */
 			
 			int wordLength = word.length();
-			if (!Character.isLetter(word.charAt(0))) {
+			
+			if (!Character.isLetter(word.charAt(0)) && wordLength>1) {
 				wordLength = wordLength - 1;
 			}
 			
-			if (!Character.isLetter(word.charAt(word.length()-1))) {
+			if (!Character.isLetter(word.charAt(word.length()-1))  && wordLength>1) {
 				wordLength = wordLength - 1;
 			}
 			
@@ -45,8 +46,10 @@ public class WordLengths {
 				counts[counts.length-1] +=1;
 			}
 			else {
+				//System.out.println(wordLength);
 				counts[wordLength] += 1;
-			}			
+			}
+			
 		}		
 	}
 	
@@ -57,7 +60,7 @@ public class WordLengths {
 	 * 
 	 */
 	public void testCountWordLengths() {
-		FileResource inputFile = new FileResource("textfilesdata/smallHamlet.txt");
+		FileResource inputFile = new FileResource("textfilesdata/errors.txt");
 		int[] counts = new int[31];		
 		countWordLengths(inputFile,counts);
 		for(int k=0; k < counts.length; k++){
